@@ -1,0 +1,86 @@
+.art-container {
+  max-width: 400px;
+  margin: 25px auto;
+  background: linear-gradient(135deg, #ffd1dc, #ffe6f0);
+  border-radius: 25px;
+  box-shadow:
+    0 4px 8px rgba(255, 182, 193, 0.4),
+    0 12px 24px rgba(255, 182, 193, 0.25);
+  padding: 25px 30px;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+  color: #4a2c61;
+  text-align: center;
+  user-select: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.art-container:hover {
+  box-shadow:
+    0 6px 14px rgba(255, 182, 193, 0.55),
+    0 16px 32px rgba(255, 182, 193, 0.38);
+}
+
+.art-image {
+  width: 100%;
+  border-radius: 20px;
+  border: 7px solid #ffbfd7;
+  box-shadow:
+    0 8px 16px rgba(255, 182, 193, 0.65),
+    inset 0 0 20px #ffe0f0;
+  cursor: default;
+}
+
+.info {
+  margin-top: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #d2527f;
+  text-shadow:
+    2px 2px 3px #ffc1e3,
+    4px 4px 5px #ffa1cc;
+  margin-bottom: 12px;
+  letter-spacing: 1.1px;
+}
+
+.creator-label {
+  font-weight: 700;
+  color: #d2527f;
+}
+
+.creator,
+.description {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #68265e;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.description {
+  margin-top: 14px;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* Стиль няшной кнопки "Назад" */
+.back-button {
+  background-color: #ff69b4; /* розовый цвет */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px; /* скругление */
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* мультяшный стиль */
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+  transition: all 0.3s ease;
+  margin-bottom: 20px; /* отступ снизу */
+}
+
+/* Эффект при наведении */
+.back-button:hover {
+  background-color: #ff85c1; /* светлее при наведении */
+  transform: scale(1.05);
+}

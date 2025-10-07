@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+
+/* Переменные для цветов и размеров */
+:root {
+  --primary-color: #fb6f92;
+  --background-gradient-start: #fbe0dc;
+  --background-gradient-end: #fde2e2;
+  --card-gradient-start: #fff0f5;
+  --card-gradient-end: #ffe4e1;
+  --border-color: #ffa7c4;
+  --shadow-color: rgba(255, 167, 196, 0.3);
+  --header-gradient: linear-gradient(45deg, #ffd1dc, #ffb6b9);
+  --font-primary: 'Pacifico', cursive;
+  --font-header: 'Chewy', cursive;
+  --font-body: 'Comic Neue', cursive;
+}
+
+/* Общий стиль всей страницы */
+.anime-page body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary);
+  font-weight: 300;
+  font-size: 15px;
+  color: #fff;
+  background: radial-gradient(ellipse at bottom, var(--background-gradient-start), var(--background-gradient-end));
+}
+
+/* Заголовок */
+.anime-page h1 {
+  font-family: var(--font-header);
+  font-weight: 700;
+  font-size: 50px;
+  color: var(--primary-color);
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+  padding: 20px 0 10px 10px;
+  text-align: center;
+  background: var(--header-gradient);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Обертка для всей страницы */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Область с карточками */
+section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Карточка: три в ряд, меняется на две и одну при мобильных */
+.cat-art {
+  flex: 1 1 calc(33.33% - 20px);
+  max-width: calc(33.33% - 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
+  padding: 15px;
+  border-radius: 15px;
+  border: 3px solid var(--border-color);
+  box-shadow: 0 8px 16px var(--shadow-color);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  cursor: pointer; /* добавим курсор для интерактивности */
+}
+
+/* Эффект при наведении */
+.cat-art:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(255, 167, 196, 0.5);
+  background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+}
+
+/* Для картинок */
+.cat-image {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  border: 3px solid #ffe4e1;
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.3);
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+/* Можно чуть увеличить изображение при наведении */
+.cat-art:hover .cat-image {
+  transform: scale(1.05);
+}
+
+/* Адаптивность: два в ряд на средних экранах, один — на мобильных */
+@media(max-width: 900px) {
+  .cat-art {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media(max-width: 600px) {
+  .cat-art {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+.loadingmore {
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px 30px;
+  cursor: pointer;
+  box-shadow:
+    0 4px 6px rgba(255, 154, 158, 0.5),
+    0 0 10px rgba(255, 154, 158, 0.7);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Эффект «пульсации» при наведении */
+.loadingmore:hover {
+  box-shadow:
+    0 0 15px rgba(255, 154, 158, 0.9),
+    0 0 40px rgba(250, 208, 196, 0.8);
+  transform: scale(1.05);
+}
+
+/* Лёгкая анимация пульсации постоянно */
+@keyframes pulse {
+  0% {
+    box-shadow:
+      0 4px 6px rgba(255, 154, 158, 0.5),
+      0 0 10px rgba(255, 154, 158, 0.7);
+  }
+  50% {
+    box-shadow:
+      0 6px 8px rgba(255, 154, 158, 0.7),
+      0 0 20px rgba(255, 154, 158, 1);
+  }
+  100% {
+    box-shadow:
+      0 4px 6px rgba(255, 154, 158, 0.5),
+      0 0 10px rgba(255, 154, 158, 0.7);
+  }
+}
+
+.loadingmore {
+  animation: pulse 3s infinite;
+}
+
+/* Для ещё большего забавного эффекта — небольшое покачивание */
+@keyframes swing {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(3deg); }
+  75% { transform: rotate(-3deg); }
+}
+
+.loadingmore:hover {
+  animation: swing 0.5s ease-in-out infinite;
+}
+
+
+/* Обертка для поиска */
+.nyan-search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Само поле поиска */
+.nyan-search-input {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 3px solid #ff69b4; /* розовая граница */
+  border-radius: 25px; /* скруглённые края */
+  outline: none;
+  background: linear-gradient(135deg, #ffe4e1, #fbb6ce); /* мягкий градиент */
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3); /* тень */
+  transition: all 0.3s ease;
+}
+
+.nyan-search-input::placeholder {
+  color: #ff69b4; /* розовый цвет для placeholder */
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* более анимешный стиль */
+}
+
+/* Анимация при фокусе */
+.nyan-search-input:focus {
+  border-color: #ff1493; /* более насыщенный розовый при фокусе */
+  box-shadow: 0 0 15px #ff1493; /* сияние */
+  background: linear-gradient(135deg, #ffe4e1, #ffb6c1); /* изменённый градиент */
+  transform: scale(1.02); /* чуть увеличиваем при фокусе */
+}
+
+/* Плавность */
+.nyan-search-input:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+}
