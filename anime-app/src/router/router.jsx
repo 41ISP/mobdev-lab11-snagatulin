@@ -12,7 +12,4 @@ export const router = createBrowserRouter([
     path: "/art/:id",
     element: <OtherPage/>
   },
-  {
-    basename: "/mobdev3-lab11-snagatulin" 
-  }
 ]);
