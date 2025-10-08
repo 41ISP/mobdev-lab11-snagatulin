@@ -5,12 +5,10 @@ import { useNavigate } from 'react-router-dom';
 function AnimePage() {
   const [images, setImages] = useState([]);
   const [loadCount, setLoadCount] = useState(1);
-  const [Tag, setTag] = useState('');
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  const fetchMultipleImages = async () => {
+  const fetchImages = async () => {
     const imgs = [];
-    const Tag = '';
     const count = 10 * loadCount;
     for (let i = 0; i < 10; i++) {
       try {
@@ -21,46 +19,24 @@ function AnimePage() {
       } catch (err) {
         console.error(`Ошибка при запросе изображения ${i + 1}:`, err);
       }
-    } 
-    setImages(prevImages => [...prevImages, ...imgs]);
-
+    }
+ setImages(imgs);
   };
 
   useEffect(() => {
-    fetchMultipleImages();
-    }, [loadCount]);
+    fetchImages();
+  }, [loadCount]);
 
   const handleShowMore = () => {
     setLoadCount(prev => prev + 1);
   };
 
-    const handleInputChange = (e) => {
-    setTag(e.target.value.toLowerCase()); 
-  };
-
-    const filteredImages = images.filter((img) => {
-    if (Tag === '') return true; 
-    if (img.tags && Array.isArray(img.tags)) {
-      return img.tags.some(tag => tag.toLowerCase().includes(Tag));
-    }
-    return false;
-  });
-
   return (
-<div className="anime-page">
+    <div className="anime-page">
       <h1>♥ Аниме Арты ♥</h1>
-
-      <div className="nyan-search-container">
-      <input className="nyan-search-input"
-          type="text"
-          text = "Поиск по тегам"
-          placeholder="Поиск по тегам:"
-          value={Tag}
-          onChange={handleInputChange}/>
-      </div>
       <section>
-        {filteredImages.length > 0 ? (
-          filteredImages.map((imageData) => (
+        {images.length > 0 ? (
+          images.map((imageData) => (
             <div
               key={imageData.id}
               className="cat-art"
