@@ -8,7 +8,7 @@ function AnimePage() {
   const navigate = useNavigate();
 
   const fetchImages = async () => {
-    const imgs = [];
+    const imgs = [...images];
     const count = 10 * loadCount;
     for (let i = 0; i < 10; i++) {
       try {

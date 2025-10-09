@@ -6,6 +6,6 @@ import { router } from './router/router'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router}  basename="/mobdev-lab11-snagatulin"/>
   </StrictMode>,
 )
